@@ -1,0 +1,2 @@
+.log-container { max-height: 60vh; overflow: auto; border: 1px solid #eaeaea; border-radius: 8px; background: #0b1220; }
+.log-pre { color: #cde3ff; margin: 0; padding: 0.25rem 0.5rem; font-size: 0.85rem; white-space: pre-wrap; border-bottom: 1px solid #0e1626; }

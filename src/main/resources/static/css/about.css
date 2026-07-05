@@ -1,0 +1,74 @@
+.about-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Hero Section */
+.about-hero {
+  margin-bottom: 2rem;
+}
+.about-hero h1 {
+  font-size: 2.5rem;
+  color: #f85b00;
+  margin-bottom: 1rem;
+}
+.about-hero p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Details Section */
+.about-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.about-card {
+  flex: 1 1 300px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: left;
+}
+.about-card h2 {
+  font-size: 1.5rem;
+  color: #f85b00;
+  margin-bottom: 1rem;
+}
+.about-card p, .about-card ul {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+.about-card ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+.about-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Legacy Section */
+.about-legacy {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fdfdfd;
+  border-top: 2px solid #f85b00;
+}
+.about-legacy h2 {
+  font-size: 1.8rem;
+  color: #f85b00;
+  margin-bottom: 1rem;
+}
+.about-legacy p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}

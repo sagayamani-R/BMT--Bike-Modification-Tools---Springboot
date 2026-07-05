@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/header :: *"></html>
+<link rel="stylesheet" th:href="@{/css/bmt-admins.css}">
+<div class="row">
+  <div class="col-12 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6 class="fw-semibold" th:text="${adminName}">Admin</h6>
+        <ul class="list-unstyled vstack gap-2 mt-2">
+          <li><a th:href="@{/admin/mgmt}" class="btn btn-outline-secondary w-100">Users</a></li>
+          <li><a th:href="@{/admin/mgmt}" class="btn btn-outline-secondary w-100">Orders</a></li>
+          <li><a th:href="@{/admin/mgmt}" class="btn btn-outline-secondary w-100">Payments</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" th:if="${isSuper}">
+      <div class="card-body">
+        <h6 class="fw-semibold mb-2">Add/Update Admin</h6>
+        <form th:action="@{/admin/mgmt/add}" method="post" class="vstack gap-2">
+          <input class="form-control" th:field="${newAdmin.username}" placeholder="Admin username" />
+          <input class="form-control" th:field="${newAdmin.phone}" placeholder="Phone" />
+          <input class="form-control" th:field="${newAdmin.email}" placeholder="Email" />
+          <input class="form-control" th:field="${newAdmin.password}" type="password" placeholder="Password" />
+          <select class="form-select" th:field="${newAdmin.role}">
+            <option value="ADMIN">ADMIN</option>
+            <option value="SUPER_ADMIN">SUPER_ADMIN</option>
+          </select>
+          <button class="btn btn-primary" type="submit">Add admin</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-9">
+    <div class="d-flex justify-content-between mb-2">
+      <input class="form-control w-50" th:value="${q}" placeholder="Search by name, mobile, email, userId/orderId/paymentId">
+      <select class="form-select w-auto" th:value="${sort}">
+        <option value="">Sort</option>
+        <option value="name-asc">Name ASC</option>
+        <option value="name-desc">Name DESC</option>
+        <option value="date">Created date</option>
+      </select>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header fw-semibold">Admins</div>
+      <div class="card-body">
+        <table class="table table-sm">
+          <thead><tr><th>Username</th><th>Phone</th><th>Email</th><th>Role</th><th th:if="${isSuper}">Actions</th></tr></thead>
+          <tbody>
+            <tr th:each="a : ${admins}">
+              <td th:text="${a.username}"></td>
+              <td th:text="${a.phone}"></td>
+              <td th:text="${a.email}"></td>
+              <td th:text="${a.role}"></td>
+              <td th:if="${isSuper}">
+                <form th:action="@{/admin/mgmt/delete/{id}(id=${a.id})}" method="post">
+                  <button class="btn btn-outline-danger btn-sm">Delete</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header fw-semibold">Users</div>
+      <div class="card-body">
+        <table class="table table-sm">
+          <thead><tr><th>ID</th><th>Username</th><th>Phone</th><th>Email</th></tr></thead>
+          <tbody>
+            <tr th:each="u : ${users}">
+              <td th:text="${u.id}"></td>
+              <td th:text="${u.username}"></td>
+              <td th:text="${u.phone}"></td>
+              <td th:text="${u.email}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header fw-semibold">Orders</div>
+      <div class="card-body">
+        <table class="table table-sm">
+          <thead><tr><th>ID</th><th>UserID</th><th>Status</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr th:each="o : ${orders}">
+              <td th:text="${o.id}"></td>
+              <td th:text="${o.user.id}"></td>
+              <td th:text="${o.status}"></td>
+              <td th:text="${o.totalAmount}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header fw-semibold">Payments</div>
+      <div class="card-body">
+        <table class="table table-sm">
+          <thead><tr><th>ID</th><th>OrderID</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr th:each="p : ${payments}">
+              <td th:text="${p.id}"></td>
+              <td th:text="${p.order.id}"></td>
+              <td th:text="${p.amount}"></td>
+              <td th:text="${p.status}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div></body></html>

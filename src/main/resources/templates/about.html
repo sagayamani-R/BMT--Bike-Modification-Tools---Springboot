@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>About Us - BMT</title>
+  <!-- Global styles -->
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/footer.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/brands.css}">
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" th:href="@{/css/about.css}">
+</head>
+<body>
+
+<!-- Header Fragment -->
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Main Content -->
+<main class="about-container">
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <h1>About Bike Modification Tools</h1>
+    <p>
+      Welcome to <strong>BMT</strong>, your trusted partner in upgrading your beast with new style.
+      We provide premium modification kits, accessories, and tools for riders who want performance,
+      safety, and personality in every ride.
+    </p>
+  </section>
+
+  <!-- Mission / Vision / Values -->
+  <section class="about-details">
+    <div class="about-card">
+      <h2>Our Mission</h2>
+      <p>
+        To empower bikers with high-quality modification tools and accessories,
+        blending safety, style, and performance.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h2>Our Vision</h2>
+      <p>
+        To become India’s leading bike modification hub, offering innovative solutions
+        and a seamless shopping experience.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h2>Our Values</h2>
+      <ul>
+        <li>Trusted by thousands of riders</li>
+        <li>Secure shopping with role-based access</li>
+        <li>Exclusive AI-driven catalog search</li>
+        <li>Stylish, durable, and affordable products</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Legacy Section (Old BMT style) -->
+  <section class="about-legacy">
+    <h2>Our Journey</h2>
+    <p>
+      From humble beginnings, BMT has grown into a platform trusted by bikers across Tamil Nadu and India.
+      Our old project laid the foundation, and today we continue to innovate with modern e-commerce,
+      AI-powered search, and secure architecture.
+    </p>
+  </section>
+</main>
+
+<!-- Footer Fragment -->
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

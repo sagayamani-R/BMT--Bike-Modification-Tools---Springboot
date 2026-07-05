@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yamaha MT-15</title>
+    <!-- Global styles -->
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/mt15.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/brands.css}">
+</head>
+<body>
+
+<!-- BMT Header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- Hero Banner with Video -->
+<section class="hero-banner">
+    <video autoplay muted loop playsinline class="hero-video">
+        <source th:src="@{/images/Background/MT15 bg.mp4}" type="video/mp4">
+    </video>
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Yamaha MT-15</h1>
+                <p>The Yamaha MT-15 combines aggressive styling with agile performance, perfect for city rides and weekend thrills.</p>
+                <div class="btns">
+
+                    <a href="#mt15-accessories" class="btn">Shop Now</a>
+                    <a th:href="@{/contact}" class="btn">Have Queries</a>
+                </div>
+            </div>
+            <div class="specs">
+                <h2>155 cc</h2>
+                <h2>130 kmph</h2>
+                <h2>18.5 HP</h2>
+                <h2>14.1 Nm</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Accessories Section -->
+<div class="mt15-accessories" id="mt15-accessories">
+    <h2 class="section-title">MT-15 Accessories</h2>
+    <div class="accessories-row">
+        <!-- Loop through accessories from DB -->
+        <div class="card" th:each="a : ${accessories}">
+            <div class="card-inner">
+                <!-- Front side -->
+                <div class="card-front">
+                    <div class="image-wrapper">
+                        <img th:src="@{${a.imageUrl}}" th:alt="${a.name}">
+                    </div>
+                    <h4 th:text="${a.name}"></h4>
+                    <p class="short-desc" th:text="${a.description}"></p>
+                    <p class="price">₹ <span th:text="${a.price}"></span></p>
+                </div>
+
+                <!-- Back side -->
+                <div class="card-back">
+                    <h4>Features</h4>
+                    <ul>
+                        <li th:each="f : ${a.features}" th:text="${f.featureText}"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ✅ Stable footer outside flip -->
+            <div class="card-footer">
+                <form th:action="@{/cart/add/{id}(id=${a.id})}" method="post">
+                    <input type="hidden" name="qty" value="1"/>
+                    <button class="btn-primary-home">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Brands -->
+<div th:replace="~{fragments/brands :: brands}"></div>
+
+<!-- BMT Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

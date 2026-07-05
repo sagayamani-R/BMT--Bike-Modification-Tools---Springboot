@@ -1,0 +1,38 @@
+/* Footer Base */
+footer {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Social Bar */
+.social-icons a {
+  color: #172337; /* footer dark blue */
+  margin: 0 8px;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #000; /* or switch to orange (#f57c00) if you prefer */
+}
+
+/* Footer Content */
+footer h6 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #ffae00;
+}
+
+footer p {
+  color: #ccc;
+  margin: 4px 0;
+  font-size: 0.85rem;
+}
+
+footer a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffae00;
+}

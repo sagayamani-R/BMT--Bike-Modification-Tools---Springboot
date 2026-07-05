@@ -1,0 +1,87 @@
+<header th:fragment="header">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <nav class="bmt-navbar">
+    <div class="bmt-header-container">
+
+      <!-- Left: Logo + Language -->
+      <div class="left-section">
+        <a class="bmt-logo" th:href="@{/}">
+          <img th:src="@{/images/Logo/logo2.png}" alt="BMT Logo">
+        </a>
+        <form class="bmt-lang-form" method="get" th:action="@{/products}">
+          <select class="bmt-lang-select" name="lang" onchange="this.form.submit()">
+            <option value="en" th:text="#{lang.en}">English</option>
+            <option value="ta" th:text="#{lang.ta}">Tamil</option>
+            <option value="fr" th:text="#{lang.fr}">French</option>
+            <option value="es" th:text="#{lang.es}">Spanish</option>
+            <option value="de" th:text="#{lang.de}">German</option>
+            <option value="zh" th:text="#{lang.zh}">Chinese</option>
+            <option value="ja" th:text="#{lang.ja}">Japanese</option>
+            <option value="as" th:text="#{lang.as}">Assamese</option>
+            <option value="bn" th:text="#{lang.bn}">Bengali</option>
+            <option value="brx" th:text="#{lang.brx}">Bodo</option>
+            <option value="doi" th:text="#{lang.doi}">Dogri</option>
+            <option value="gu" th:text="#{lang.gu}">Gujarati</option>
+            <option value="hi" th:text="#{lang.hi}">Hindi</option>
+            <option value="kn" th:text="#{lang.kn}">Kannada</option>
+            <option value="ks" th:text="#{lang.ks}">Kashmiri</option>
+            <option value="kok" th:text="#{lang.kok}">Konkani</option>
+            <option value="mai" th:text="#{lang.mai}">Maithili</option>
+            <option value="ml" th:text="#{lang.ml}">Malayalam</option>
+            <option value="mni" th:text="#{lang.mni}">Manipuri</option>
+            <option value="mr" th:text="#{lang.mr}">Marathi</option>
+            <option value="ne" th:text="#{lang.ne}">Nepali</option>
+            <option value="or" th:text="#{lang.or}">Odia</option>
+            <option value="pa" th:text="#{lang.pa}">Punjabi</option>
+            <option value="sa" th:text="#{lang.sa}">Sanskrit</option>
+            <option value="sd" th:text="#{lang.sd}">Sindhi</option>
+            <option value="te" th:text="#{lang.te}">Telugu</option>
+            <option value="ur" th:text="#{lang.ur}">Urdu</option>
+          </select>
+        </form>
+      </div>
+
+      <!-- Center: Search + Nav -->
+      <div class="center-section">
+        <form class="bmt-search-form" th:action="@{/products}" method="get">
+          <input class="bmt-search-input" type="search" name="q"
+                 th:value="${q}" th:placeholder="#{search.placeholder}">
+          <button class="bmt-search-btn" type="submit" th:text="#{search.button}">Search</button>
+        </form>
+
+        <ul class="bmt-nav-links">
+          <li><a th:href="@{/}">HOME</a></li>
+          <li><a th:href="@{/about}">ABOUT</a></li>
+          <li><a th:href="@{/contact}">CONTACT</a></li>
+          <li sec:authorize="isAnonymous()"><a class="nav-login" th:href="@{/auth/login}">LOGIN</a></li>
+        </ul>
+      </div>
+
+      <!-- Right: Cart + User Profile -->
+      <div class="right-section">
+        <a class="bmt-cart-link" th:href="@{/cart}">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="bmt-cart-count" class="bmt-cart-count">0</span>
+        </a>
+
+        <div class="user-dropdown" sec:authorize="isAuthenticated()">
+          <div class="user-info">
+            <img th:src="@{${#authentication.principal.img}}" alt="User Profile" class="profile-img">
+            <span class="username"
+                  th:text="${#strings.length(#authentication.principal.username) > 10 ?
+                            #strings.substring(#authentication.principal.username,0,10) + '..' :
+                            #authentication.principal.username}">
+            </span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" th:href="@{/profile}">Profile</a></li>
+            <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</header>

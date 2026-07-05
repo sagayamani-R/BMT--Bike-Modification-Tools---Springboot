@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/header :: header"></html>
+<link rel="stylesheet" th:href="@{/css/order-history.css}">
+<h3 class="page-title">Order History</h3>
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between" th:each="o : ${orders}">
+        <span th:text="${#temporals.format(o.orderDate, 'dd MMM yyyy HH:mm')} + ' - ' + ${o.status}"></span>
+        <span class="fw-semibold">₹ <span th:text="${o.totalAmount}"></span></span>
+    </li>
+</ul>
+</div></body></html>

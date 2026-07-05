@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/header :: *"></html>
+<link rel="stylesheet" th:href="@{/css/logs.css}">
+<h3 class="page-title">Application Logs</h3>
+<div class="mb-3">
+    <form th:action="@{/logs}" method="get" class="d-flex gap-2">
+        <input class="form-control" type="text" name="date" placeholder="Filter by date (YYYY-MM-DD)">
+        <input class="form-control" type="text" name="q" placeholder="Search logs">
+        <button class="btn btn-primary" type="submit">Apply</button>
+    </form>
+</div>
+<div class="log-container">
+    <pre class="log-pre" th:each="line : ${logLines}" th:text="${line}"></pre>
+</div>
+</div></body></html>

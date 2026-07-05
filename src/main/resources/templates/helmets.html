@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Premium Helmets</title>
+  <!-- Global styles -->
+  <link rel="stylesheet" th:href="@{/css/home.css}">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/helmets.css}">
+  <link rel="stylesheet" th:href="@{/css/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/brands.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- Hero Banner with Video -->
+<section class="hero-banner">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source th:src="@{/images/Background/Helmet BG.mp4}" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Premium Helmets</h1>
+        <p>Ride safe and stylish with our curated collection of helmets designed for comfort, protection, and performance.</p>
+        <div class="btns">
+
+          <a href="#helmets-accessories" class="btn">Shop Now</a>
+
+          <a th:href="@{/contact}" class="btn">Have Queries</a>
+        </div>
+      </div>
+      <div class="specs">
+        <h2>Lightweight ABS</h2>
+        <h2>Ventilated</h2>
+        <h2>Scratch Resistant</h2>
+        <h2>CE Certified</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Helmet Collection -->
+<div class="helmets-accessories" id="helmets-accessories">
+  <h2 class="section-title">Helmet Collection</h2>
+  <div class="accessories-row">
+    <div class="card" th:each="p : ${products}">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="image-wrapper">
+            <img th:src="@{${p.imageUrl}}" th:alt="${p.name}">
+          </div>
+          <h4 th:text="${p.name}"></h4>
+          <p class="short-desc" th:text="${p.description}"></p>
+          <p class="price">₹ <span th:text="${p.price}"></span></p>
+        </div>
+        <div class="card-back">
+          <h4>Features</h4>
+          <ul>
+            <li th:each="f : ${p.features}" th:text="${f.featureText}"></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <form th:action="@{/cart/add/{id}(id=${p.id})}" method="post">
+          <input type="hidden" name="qty" value="1"/>
+          <button class="btn-primary-home">Add to Cart</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Brands -->
+<div th:replace="~{fragments/brands :: brands}"></div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

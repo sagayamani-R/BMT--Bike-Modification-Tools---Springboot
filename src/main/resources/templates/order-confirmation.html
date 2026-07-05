@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/header :: *"></html>
+<link rel="stylesheet" th:href="@{/css/order-confirmation.css}">
+<h3 class="page-title" th:text="#{order.confirmed}">Order Confirmed</h3>
+<p class="lead"><span th:text="#{order.id}">Your order ID:</span> <strong th:text="${orderId}"></strong></p>
+<a class="btn btn-link" th:href="@{/orders/history}" th:text="#{order.history}">View order history</a>
+</div></body></html>

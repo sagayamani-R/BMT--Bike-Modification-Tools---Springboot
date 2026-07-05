@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/header :: *"></html>
+<link rel="stylesheet" th:href="@{/css/checkout.css}">
+<h3 class="page-title" th:text="#{checkout.title}">Checkout</h3>
+<form th:action="@{/orders/place}" method="post" class="vstack gap-3">
+    <div>
+        <label class="form-label" th:text="#{checkout.address}">Shipping Address</label>
+        <select class="form-select" name="addressId" required>
+            <option th:each="a : ${addresses}" th:value="${a.id}" th:text="${a.street + ', ' + a.city}"></option>
+        </select>
+    </div>
+    <div>
+        <label class="form-label" th:text="#{checkout.method}">Payment Method</label>
+        <select class="form-select" name="method">
+            <option>UPI</option><option>CARD</option><option>COD</option>
+        </select>
+    </div>
+    <button class="btn btn-success" type="submit" th:text="#{checkout.place}">Place Order</button>
+</form>
+</div></body></html>

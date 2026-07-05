@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="brands">
+    <div class="brands">
+        <div class="scroll-wrapper">
+            <div class="scroll-track">
+                <!-- Logos -->
+                <div class="brand-logo"><img th:src="@{/images/logo/KTM.png}" alt="KTM"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/Yamaha.png}" alt="Yamaha"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/RoyalEnfield.png}" alt="Royal Enfield"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/Bajaj.png}" alt="Bajaj"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/Suzuki.png}" alt="Suzuki"></div>
+
+                <!-- Duplicate logos for seamless loop -->
+                <div class="brand-logo"><img th:src="@{/images/logo/KTM.png}" alt="KTM"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/Yamaha.png}" alt="Yamaha"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/RoyalEnfield.png}" alt="Royal Enfield"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/Bajaj.png}" alt="Bajaj"></div>
+                <div class="brand-logo"><img th:src="@{/images/logo/Suzuki.png}" alt="Suzuki"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
